@@ -102,16 +102,29 @@ inquirer
         `Hello ${answers.name}! Your project is named ${answers.projectName}.`
       )
     );
+// fixing table of content since it is showing out of date //
+/* ## Table of Contents
+- [ReadMe Generator](#readme-generator)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [License](#license)
+  Add on later */
 
     const readmeTemplate = `
 # ${answers.projectName}
 
+
 ## Table of Contents
-- [Description](#description)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Tests](#tests)
-- [License](#license)
+- [ReadMe Generator](#readme-generator)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [License](#license)
 
 ## Description
 

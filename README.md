@@ -1,5 +1,6 @@
 
-# ReadMe Generator
+# 
+
 
 ## Table of Contents
 - [ReadMe Generator](#readme-generator)
@@ -12,19 +13,19 @@
 
 ## Description
 
-Readme Generator where user can make a quick readme.md
+
 
 ## Usage
 
-Readme Generator where user can make a quick readme.md
+
 
 ## Contributing
 
-Mostly mainly and group community
+
 
 ## Tests
 
-testing node.js
+
 
 ## License
 
