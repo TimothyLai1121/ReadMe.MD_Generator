@@ -106,6 +106,13 @@ inquirer
     const readmeTemplate = `
 # ${answers.projectName}
 
+## Table of Contents
+- [Description](#description)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [License](#license)
+
 ## Description
 
 ${answers.projectDescription}
@@ -126,6 +133,7 @@ ${answers.projectTest}
 
 ${answers.projectLicense}
 `;
+
 
     fs.writeFile("README.md", readmeTemplate, (error) => {
       if (error) {
