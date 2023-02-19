@@ -80,9 +80,9 @@ inquirer
         { name: "Apache license 2.0", value: "apache-2.0" },
         { name: "Artistic license 2.0", value: "artistic-2.0" },
         { name: "Boost Software License 1.0", value: "bsl-1.0" },
-        { name: 'BSD 2-clause "Simplified" license', value: "bsd-2-clause" },
+        { name: "BSD 2-clause 'Simplified' license", value: "bsd-2-clause" },
         {
-          name: 'BSD 3-clause "New" or "Revised" license',
+          name: "BSD 3-clause 'New' or 'Revised' license",
           value: "bsd-3-clause",
         },
         { name: "BSD 3-clause Clear license", value: "bsd-3-clause-clear" },

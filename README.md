@@ -8,7 +8,7 @@
   - [Description](#description)
   - [Programming Lanaguage](#programming-language)
   - [Contributing](#contributing)
-  - [Tests](#tests)
+  - [Tests](#tests
   - [License](#license)
 
 ## Description
@@ -17,7 +17,7 @@
 
 ## Prgoramming Lanaguage
 
-HTML,CSS
+HTML,CSS,Javascript,JQuery
 
 ## Contributing
 
@@ -29,4 +29,4 @@ Explaing the testing breakdown such as what issues were found and how they were 
 
 ## License
 
-apache-2.0
+bsd-3-clause
