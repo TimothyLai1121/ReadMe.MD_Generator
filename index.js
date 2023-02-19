@@ -5,45 +5,73 @@ import figlet from "figlet";
 
 //  type: (String) Type of the prompt. Defaults: input - Possible values: input, number, confirm, list, rawlist, expand, checkbox, password, editor //
 
-
-
+console.log(
+  figlet.textSync("ReadME | Maker", "shadow", { horizontalLayout: "fitted" })
+);
+console.log(""); // adding space between figlet and inquirer // // it is a terminal after all //
+console.log(""); // adding space between figlet and inquirer // // it is a terminal after all //
 
 inquirer
   .prompt([
-   {
+    {
       type: "input",
       name: "name",
       message: chalk.yellow("What is your name?"),
+      // adding default value for giggles //
+      default: "buddy",
     },
     {
       type: "input",
       name: "projectName",
       message: chalk.yellow("What is the name of your project?"),
+      validate: function (input) {
+        if (!input) {
+          return "Hey Buddy, name it something. type 'no'.";
+        }
+        if (input.toLowerCase() === "no") {
+          return "You just wasting our time now.";
+        }
+        return true;
+      },
+      default: "Project Name",
     },
+
     {
       type: "input",
       name: "projectDescription",
       message: chalk.yellow("What is the description of your project?"),
+      transformer: function (input) {
+        return chalk.green(input);
+      },
     },
     {
-      type: "input",
-      name: "projectUsage",
-      message: chalk.yellow("What is the usage of your project?"),
+      type: "checkbox",
+      name: "projectLanguage",
+      message: chalk.yellow("What language(s) did you use for your project?"),
+      choices: ["HTML", "CSS", "Javascript", "JQuery", "NodeJS", "ReactJS"],
+      validate: function (answer) {
+        if (answer.length < 1) {
+          return "You must choose at least one language.";
+        }
+        return true;
+      },
     },
     {
       type: "input",
       name: "projectContributing",
       message: chalk.yellow("Who are the contributors of your project?"),
+     
     },
     {
       type: "input",
       name: "projectTest",
       message: chalk.yellow("What is the test of your project?"),
-    }
-    /*
+      default: "Explaing the testing breakdown such as what issues were found and how they were resolved. Note: Covid-19 is not an acceptable reason for not testing your application.",
+    },
+    
     {
       // adding list of licenses //
-      /*
+      
       type: "list",
       name: "projectLicense",
       message: chalk.yellow("What is the license of your project?"),
@@ -93,25 +121,26 @@ inquirer
         { name: "zLib", value: "zlib" },
       ],
     },
-    */
+    
   ])
-  
+
   .then((answers) => {
+    console.log(chalk.bgYellow(answers.projectLanguage));
     console.log(
       chalk.bgYellow(
         `Hello ${answers.name}! Your project is named ${answers.projectName}.`
       )
     );
-// fixing table of content since it is showing out of date //
-/* ## Table of Contents
-- [ReadMe Generator](#readme-generator)
-  - [Table of Contents](#table-of-contents)
-  - [Description](#description)
-  - [Usage](#usage)
-  - [Contributing](#contributing)
-  - [Tests](#tests)
-  - [License](#license)
-  Add on later */
+    // fixing table of content since it is showing out of date //
+    /* ## Table of Contents
+    - [ReadMe Generator](#readme-generator)
+      - [Table of Contents](#table-of-contents)
+      - [Description](#description)
+      - [Usage](#usage)
+      - [Contributing](#contributing)
+      - [Tests](#tests)
+      - [License](#license)
+      Add on later */
 
     const readmeTemplate = `
 # ${answers.projectName}
@@ -121,18 +150,18 @@ inquirer
 - [ReadMe Generator](#readme-generator)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
-  - [Usage](#usage)
+  - [Programming Lanaguage](#programming-language)
   - [Contributing](#contributing)
-  - [Tests](#tests)
+  - [Tests](#tests
   - [License](#license)
 
 ## Description
 
 ${answers.projectDescription}
 
-## Usage
+## Prgoramming Lanaguage
 
-${answers.projectUsage}
+${answers.projectLanguage}
 
 ## Contributing
 
@@ -146,7 +175,6 @@ ${answers.projectTest}
 
 ${answers.projectLicense}
 `;
-
 
     fs.writeFile("README.md", readmeTemplate, (error) => {
       if (error) {

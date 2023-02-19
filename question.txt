@@ -1,5 +1,8 @@
-.prompt([
-    {
+
+
+inquirer
+  .prompt([
+   {
       type: "input",
       name: "name",
       message: chalk.yellow("What is your name?"),
@@ -28,9 +31,11 @@
       type: "input",
       name: "projectTest",
       message: chalk.yellow("What is the test of your project?"),
-    },
+    }
+    /*
     {
       // adding list of licenses //
+      /*
       type: "list",
       name: "projectLicense",
       message: chalk.yellow("What is the license of your project?"),
@@ -80,3 +85,70 @@
         { name: "zLib", value: "zlib" },
       ],
     },
+    */
+  ])
+  
+  .then((answers) => {
+    console.log(
+      chalk.bgYellow(
+        `Hello ${answers.name}! Your project is named ${answers.projectName}.`
+      )
+    );
+// fixing table of content since it is showing out of date //
+/* ## Table of Contents
+- [ReadMe Generator](#readme-generator)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [License](#license)
+  Add on later */
+
+    const readmeTemplate = `
+# ${answers.projectName}
+
+
+## Table of Contents
+- [ReadMe Generator](#readme-generator)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [License](#license)
+
+## Description
+
+${answers.projectDescription}
+
+## Usage
+
+${answers.projectUsage}
+
+## Contributing
+
+${answers.projectContributing}
+
+## Tests
+
+${answers.projectTest}
+
+## License
+
+${answers.projectLicense}
+`;
+
+
+    fs.writeFile("README.md", readmeTemplate, (error) => {
+      if (error) {
+        console.error(chalk.red("Failed to create README.md file."));
+        console.error(error);
+      } else {
+        console.log(chalk.green("Successfully created README.md file."));
+      }
+    });
+  })
+  .catch((error) => {
+    console.error(chalk.bgRed(error));
+  });
