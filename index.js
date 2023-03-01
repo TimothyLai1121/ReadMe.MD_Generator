@@ -2,6 +2,7 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 import fs from "fs";
 import figlet from "figlet";
+import ora from "ora";
 
 //  type: (String) Type of the prompt. Defaults: input - Possible values: input, number, confirm, list, rawlist, expand, checkbox, password, editor //
 
@@ -60,18 +61,18 @@ inquirer
       type: "input",
       name: "projectContributing",
       message: chalk.yellow("Who are the contributors of your project?"),
-     
     },
     {
       type: "input",
       name: "projectTest",
       message: chalk.yellow("What is the test of your project?"),
-      default: "Explaing the testing breakdown such as what issues were found and how they were resolved. Note: Covid-19 is not an acceptable reason for not testing your application.",
+      default:
+        "Explaing the testing breakdown such as what issues were found and how they were resolved. Note: Covid-19 is not an acceptable reason for not testing your application.",
     },
-    
+
     {
       // adding list of licenses //
-      
+
       type: "list",
       name: "projectLicense",
       message: chalk.yellow("What is the license of your project?"),
@@ -121,7 +122,6 @@ inquirer
         { name: "zLib", value: "zlib" },
       ],
     },
-    
   ])
 
   .then((answers) => {
@@ -142,8 +142,12 @@ inquirer
       - [License](#license)
       Add on later */
 
+
+
     const readmeTemplate = `
 # ${answers.projectName}
+
+
 
 
 ## Table of Contents
@@ -152,7 +156,7 @@ inquirer
   - [Description](#description)
   - [Programming Lanaguage](#programming-language)
   - [Contributing](#contributing)
-  - [Tests](#tests
+  - [Tests](#tests)
   - [License](#license)
 
 ## Description
@@ -174,17 +178,26 @@ ${answers.projectTest}
 ## License
 
 ${answers.projectLicense}
-`;
 
-    fs.writeFile("README.md", readmeTemplate, (error) => {
-      if (error) {
-        console.error(chalk.red("Failed to create README.md file."));
-        console.error(error);
-      } else {
-        console.log(chalk.green("Successfully created README.md file."));
-      }
-    });
-  })
-  .catch((error) => {
-    console.error(chalk.bgRed(error));
+`;
+const spinner = ora({
+  text: 'Generating README file...',
+  color: 'yellow'
+}).start();
+
+setTimeout(() => {
+  fs.writeFile("README.md", readmeTemplate, (error) => {
+    if (error) {
+      spinner.fail('Failed to create README.md file.');
+      console.error(chalk.red("Failed to create README.md file."));
+      console.error(error);
+    } else {
+      spinner.succeed('Successfully created README.md file.');
+      console.log(chalk.green("Successfully created README.md file."));
+    }
   });
+}, 2000);
+})
+.catch((error) => {
+console.error(chalk.bgRed(error));
+});
