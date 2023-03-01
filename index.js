@@ -199,7 +199,7 @@ setTimeout(() => {
       console.log(chalk.green("Successfully created README.md file."));
     }
   });
-}, 2000);
+}, 4000); // 4 seconds
 })
 .catch((error) => {
 console.error(chalk.bgRed(error));
