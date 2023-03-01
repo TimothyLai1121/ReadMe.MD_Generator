@@ -1,5 +1,5 @@
 
-# Project Name
+# README.MD_Maker
 
 
 
@@ -15,21 +15,21 @@
 
 ## Description
 
-
+A README.md generator with Node.js command-line that allows users to quickly and easily generate a professional README file for their projects.
 
 ## Prgoramming Lanaguage
 
-HTML,CSS
+Javascript,NodeJS
 
 ## Contributing
 
-
+Packages such as inquirer, chalk, fs, figlet, and ora document have help the project more robust.
 
 ## Tests
 
-Explaing the testing breakdown such as what issues were found and how they were resolved. Note: Covid-19 is not an acceptable reason for not testing your application.
+Command-Line
 
 ## License
 
-afl-3.0
+wtfpl
 

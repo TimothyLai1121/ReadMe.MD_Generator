@@ -1,3 +1,6 @@
+// using import instead of require //
+// adding type = 'module' to package.json //
+
 import inquirer from "inquirer";
 import chalk from "chalk";
 import fs from "fs";
