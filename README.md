@@ -29,6 +29,7 @@ Javascript,NodeJS
 
 ## Contributing
 ![npm](carbon.png)
+
 Packages such as inquirer, chalk, fs, figlet, and ora document have help the project more robust.
 
 ## Tests
