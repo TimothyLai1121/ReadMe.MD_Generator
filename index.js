@@ -166,7 +166,7 @@ inquirer
 
 ${answers.projectDescription}
 
-## Prgoramming Lanaguage
+## Programming Lanaguage
 
 ${answers.projectLanguage}
 
